@@ -1,76 +1,124 @@
-// Navbar.jsx
-import React, { useState } from "react";
+import { Download, Github, Linkedin, Instagram, Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
-const Navbar = () => {
-  const [open, setOpen] = useState(false);
-
-  // Nav links generated using map()
-  const navItems = [
-    { name: "Home", href: "#" },
-    { name: "Menu", href: "#menu" },
-    { name: "Deals", href: "#deals" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
-  ];
+export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-red-500 text-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-2 text-2xl font-bold">
-          🍔 <span>FastBite</span>
-        </div>
+    <header className="fixed top-0 left-0 w-full bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 text-yellow-400 shadow-lg z-50">
+      <nav className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+        {/* Logo / Brand */}
+        <motion.h1
+          className="text-3xl font-extrabold tracking-wide cursor-pointer hover:text-yellow-500 transition-colors"
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Royal Enfield
+        </motion.h1>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-6">
-          {navItems.map((item) => (
-            <li key={item.name}>
-              <a
-                href={item.href}
-                className="hover:text-yellow-300 transition-colors"
-              >
-                {item.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden md:flex items-center gap-8">
+          {/* Download Resume */}
+          <motion.a
+            href="#"
+            className="flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-semibold px-4 py-2 rounded-md transition-all duration-300 hover:scale-105 shadow-md"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            <Download className="w-5 h-5" />
+            <span>Download Resume</span>
+          </motion.a>
 
-        {/* Cart / CTA */}
-        <div className="hidden md:flex items-center">
-          <button className="bg-yellow-300 text-red-700 font-semibold px-4 py-2 rounded hover:bg-yellow-400 transition">
-            Order Now
-          </button>
+          {/* Social Media Icons */}
+          <motion.div
+            className="flex gap-5"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            <a
+              href="https://github.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-yellow-500 transition-transform transform hover:scale-125"
+            >
+              <Github className="w-5 h-5" />
+            </a>
+            <a
+              href="https://linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-yellow-500 transition-transform transform hover:scale-125"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-yellow-500 transition-transform transform hover:scale-125"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+          </motion.div>
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden focus:outline-none text-2xl"
-        >
-          {open ? "✖️" : "☰"}
-        </button>
-      </div>
-
-      {/* Mobile Dropdown Menu */}
-      {open && (
-        <div className="md:hidden bg-red-600 px-4 py-2 space-y-2">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="block py-2 text-white hover:text-yellow-300"
-            >
-              {item.name}
-            </a>
-          ))}
-
-          <button className="w-full bg-yellow-300 text-red-700 font-semibold px-4 py-2 rounded hover:bg-yellow-400 transition">
-            Order Now
+        <div className="md:hidden">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-yellow-400 hover:text-yellow-500 transition-colors"
+          >
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-      )}
-    </nav>
-  );
-};
+      </nav>
 
-export default Navbar;
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          transition={{ duration: 0.4 }}
+          className="md:hidden bg-gray-900 text-yellow-400 flex flex-col items-center py-4 space-y-4"
+        >
+          <a
+            href="#"
+            className="flex items-center gap-2 font-semibold hover:text-yellow-500 transition"
+          >
+            <Download className="w-5 h-5" /> Download Resume
+          </a>
+          <div className="flex gap-6">
+            <a
+              href="https://github.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-yellow-500 transition-transform transform hover:scale-125"
+            >
+              <Github />
+            </a>
+            <a
+              href="https://linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-yellow-500 transition-transform transform hover:scale-125"
+            >
+              <Linkedin />
+            </a>
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-yellow-500 transition-transform transform hover:scale-125"
+            >
+              <Instagram />
+            </a>
+          </div>
+        </motion.div>
+      )}
+    </header>
+  );
+}

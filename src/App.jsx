@@ -1,10 +1,13 @@
 import React from 'react'
 import Navbar from './component/Navbar'
+import Hero from './component/Hero'
 export default function App() {
   return (
-    <div>
-<div class="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"><div class="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]"></div></div>        
-      <Navbar/>
+    <div className='text-white ' >
+      <div className="absolute top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]"></div>
+      <Navbar />
+      <Hero />
     </div>
+
   )
 }
