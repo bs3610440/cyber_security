@@ -1,124 +1,84 @@
-import { Download, Github, Linkedin, Instagram, Menu, X } from "lucide-react";
-import { motion } from "framer-motion";
-import { useState } from "react";
+'use client';
+import { motion } from 'framer-motion';
+import { Download, Github, Linkedin, Instagram } from 'lucide-react';
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const icons = [
+    { id: 1, icon: <Github size={24} />, link: 'https://github.com' },
+    { id: 2, icon: <Linkedin size={24} />, link: 'https://linkedin.com' },
+    { id: 3, icon: <Instagram size={24} />, link: 'https://instagram.com' },
+  ];
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 text-yellow-400 shadow-lg z-50">
-      <nav className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
-        {/* Logo / Brand */}
-        <motion.h1
-          className="text-3xl font-extrabold tracking-wide cursor-pointer hover:text-yellow-500 transition-colors"
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
+    <motion.nav
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 1, ease: 'easeOut' }}
+      className="flex justify-between items-center px-8 py-4 bg-black text-yellow-400 shadow-lg sticky top-0 z-50"
+    >
+      {/* Left Side - Logo */}
+      <motion.div
+        initial={{ rotate: -90, opacity: 0 }}
+        animate={{ rotate: 0, opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="text-3xl font-extrabold tracking-wide hover:scale-110 transition-transform duration-300"
+      >
+        SK
+      </motion.div>
+
+      {/* Right Side - Download Button + Icons */}
+      <div className="flex items-center gap-6">
+        {/* Download Resume Button */}
+        <motion.a
+          href="#"
+          whileHover={{ scale: 1.1, rotate: 2 }}
+          whileTap={{ scale: 0.95 }}
+          className="flex items-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-full font-semibold hover:bg-yellow-300 transition-colors duration-300 shadow-md"
         >
-          Royal Enfield
-        </motion.h1>
+          <Download size={18} /> Download Resume
+        </motion.a>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          {/* Download Resume */}
-          <motion.a
-            href="#"
-            className="flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-semibold px-4 py-2 rounded-md transition-all duration-300 hover:scale-105 shadow-md"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            <Download className="w-5 h-5" />
-            <span>Download Resume</span>
-          </motion.a>
-
-          {/* Social Media Icons */}
-          <motion.div
-            className="flex gap-5"
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-          >
-            <a
-              href="https://github.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-yellow-500 transition-transform transform hover:scale-125"
-            >
-              <Github className="w-5 h-5" />
-            </a>
-            <a
-              href="https://linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-yellow-500 transition-transform transform hover:scale-125"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a
-              href="https://instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-yellow-500 transition-transform transform hover:scale-125"
-            >
-              <Instagram className="w-5 h-5" />
-            </a>
-          </motion.div>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-yellow-400 hover:text-yellow-500 transition-colors"
-          >
-            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      {menuOpen && (
+        {/* Social Icons */}
         <motion.div
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          transition={{ duration: 0.4 }}
-          className="md:hidden bg-gray-900 text-yellow-400 flex flex-col items-center py-4 space-y-4"
+          className="flex gap-4 items-center"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.5,
+                repeat: Infinity,
+                repeatType: 'reverse',
+              },
+            },
+          }}
         >
-          <a
-            href="#"
-            className="flex items-center gap-2 font-semibold hover:text-yellow-500 transition"
-          >
-            <Download className="w-5 h-5" /> Download Resume
-          </a>
-          <div className="flex gap-6">
-            <a
-              href="https://github.com/"
+          {icons.map((item, index) => (
+            <motion.a
+              key={item.id}
+              href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-yellow-500 transition-transform transform hover:scale-125"
+              variants={{
+                hidden: { y: 0 },
+                visible: {
+                  y: [0, -8, 0],
+                  transition: {
+                    duration: 1.2,
+                    ease: 'easeInOut',
+                    repeat: Infinity,
+                    delay: index * 0.2,
+                  },
+                },
+              }}
+              className="hover:text-white transition-colors duration-300"
             >
-              <Github />
-            </a>
-            <a
-              href="https://linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-yellow-500 transition-transform transform hover:scale-125"
-            >
-              <Linkedin />
-            </a>
-            <a
-              href="https://instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-yellow-500 transition-transform transform hover:scale-125"
-            >
-              <Instagram />
-            </a>
-          </div>
+              {item.icon}
+            </motion.a>
+          ))}
         </motion.div>
-      )}
-    </header>
+      </div>
+    </motion.nav>
   );
 }
