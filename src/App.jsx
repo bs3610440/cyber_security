@@ -1,11 +1,11 @@
 import React from 'react'
 import Navbar from './component/Navbar'
 import Hero from './component/Hero'
-import Tech from './component/Tech'
-// import Expe from './component/Expe'
-// import Project from './component/Project'
-// import Contact from './component/Contact'
-// import Footer from './component/Footer'
+// import Tech from './component/Tech'
+import Expe from './component/Expe'
+import Project from './component/Project'
+import Contact from './component/Contact'
+import Footer from './component/Footer'
 export default function App() {
   return (
     <div className='text-white'>
@@ -13,11 +13,11 @@ export default function App() {
 
 <Navbar/>
 <Hero/>
-<Tech/>
-{/* <Expe/>
+{/* <Tech/> */}
+<Expe/>
 <Project/>
 <Contact/>
-<Footer/> */}
+<Footer/>
 
   </div>
   )
