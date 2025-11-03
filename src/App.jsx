@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './component/Navbar'
 import Hero from './component/Hero'
-// import Tech from './component/Tech'
+import Tech from './component/Tech'
 // import Expe from './component/Expe'
 // import Project from './component/Project'
 // import Contact from './component/Contact'
@@ -13,8 +13,8 @@ export default function App() {
 
 <Navbar/>
 <Hero/>
-{/* <Tech/>
-<Expe/>
+<Tech/>
+{/* <Expe/>
 <Project/>
 <Contact/>
 <Footer/> */}
