@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Mail, Phone, MessageCircle, User, Send, MapPin, Linkedin, Github, Twitter } from 'lucide-react'
 
-export default function Contact() {
+export default function Contac() {
   const [data, setData] = useState({ name: '', email: '', mobile: '', message: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)

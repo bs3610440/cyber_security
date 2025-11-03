@@ -4,7 +4,7 @@ import Hero from './component/Hero'
 // import Tech from './component/Tech'
 import Expe from './component/Experiance'
 import Project from './component/Project'
-import Contact from './component/Contact'
+import Contact from './component/Contac'
 import Footer from './component/Footer'
 export default function App() {  
   return (
