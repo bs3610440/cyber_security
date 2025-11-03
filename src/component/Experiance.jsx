@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function Expe() {
+export default function Experiance() {
   const data = [
     {
       logo: "https://cdn-icons-png.flaticon.com/512/5968/5968705.png",
