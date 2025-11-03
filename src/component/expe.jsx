@@ -22,16 +22,16 @@ export default function Expe() {
   ];
 
   return (
-    <section className="relative bg-gradient-to-b from-black via-yellow-900 to-black text-white py-20 px-6 md:px-16 lg:px-24 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-black via-gray-900 to-black text-white py-20 px-6 md:px-16 lg:px-24 overflow-hidden">
       {/* Animated Background Glow */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-yellow-600/20 via-yellow-500/10 to-yellow-600/20 blur-3xl"
+        className="absolute inset-0 bg-gradient-to-r from-green-700/20 via-green-500/10 to-green-700/20 blur-3xl"
         animate={{ opacity: [0.6, 0.9, 0.6] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <motion.h2
-        className="text-4xl md:text-5xl font-extrabold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 relative z-10"
+        className="text-4xl md:text-5xl font-extrabold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500 drop-shadow-[0_0_20px_rgba(0,255,100,0.6)] relative z-10"
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -43,7 +43,7 @@ export default function Expe() {
         {data.map((exp, index) => (
           <motion.div
             key={index}
-            className="bg-black/40 border border-yellow-500/30 rounded-xl p-6 shadow-lg hover:shadow-yellow-500/40 transition-all duration-300"
+            className="bg-black/40 border border-green-500/30 rounded-xl p-6 shadow-lg hover:shadow-[0_0_25px_rgba(0,255,100,0.4)] transition-all duration-300"
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: index * 0.2, ease: "easeOut" }}
@@ -56,11 +56,11 @@ export default function Expe() {
                 alt={exp.companyname}
                 className="w-14 h-14 rounded-full object-contain bg-white p-2"
                 whileHover={{ rotate: 10, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                transition={{ type: 'spring', stiffness: 300 }}
               />
               <div>
-                <h3 className="text-2xl font-bold text-yellow-400">{exp.companyname}</h3>
-                <p className="text-sm text-gray-300">
+                <h3 className="text-2xl font-bold text-green-400">{exp.companyname}</h3>
+                <p className="text-sm text-gray-400">
                   {exp.startdate} - {exp.enddate}
                 </p>
               </div>
@@ -68,7 +68,7 @@ export default function Expe() {
 
             {/* Position */}
             <motion.h4
-              className="text-xl font-semibold text-yellow-300 mb-2"
+              className="text-xl font-semibold text-green-300 mb-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -81,10 +81,10 @@ export default function Expe() {
 
             {/* Animated line */}
             <motion.div
-              className="mt-4 h-[2px] bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full"
+              className="mt-4 h-[2px] bg-gradient-to-r from-green-400 to-emerald-500 rounded-full"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
-              transition={{ duration: 1, ease: "easeInOut" }}
+              transition={{ duration: 1, ease: 'easeInOut' }}
             />
           </motion.div>
         ))}
@@ -92,9 +92,9 @@ export default function Expe() {
 
       {/* Decorative bottom glow */}
       <motion.div
-        className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-yellow-600/20 to-transparent blur-3xl"
+        className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-green-700/30 to-transparent blur-3xl"
         animate={{ opacity: [0.5, 0.8, 0.5] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
       />
     </section>
   );
