@@ -15,7 +15,7 @@ import {
   SiPostman,
 } from "react-icons/si";
 
-export default function Tech() {
+export default function Skill() {
   const icons = [
     { icon: <SiJavascript className="text-green-400" />, name: "JavaScript" },
     { icon: <FaReact className="text-teal-400" />, name: "React" },
