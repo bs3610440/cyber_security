@@ -5,7 +5,7 @@ import Hero from './component/Hero'
 import Expe from './component/Experiance'
 import Project from './component/Project'
 import Contact from './component/Contac'
-import Footer from './component/Footer'
+import Footer from './component/Foo'
 export default function App() {  
   return (
     <div className='text-white'>

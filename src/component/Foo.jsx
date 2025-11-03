@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaFacebookF, FaInstagram, FaTwitter, FaGithub } from "react-icons/fa";
 
-export default function Footer() {
+export default function Foo() {
   return (
     <motion.footer
       initial={{ opacity: 0, y: 40 }}
