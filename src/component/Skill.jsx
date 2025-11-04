@@ -52,7 +52,7 @@ export default function Skill() {
         transition={{ duration: 1 }}
         className="text-5xl md:text-7xl font-extrabold mb-16 text-green-400 text-center drop-shadow-[0_0_25px_rgba(0,255,100,0.7)]"
       >
-        ⚡ Technology Universe
+         Technology Universe
       </motion.h1>
 
       {/* Rotating Icon Ring */}

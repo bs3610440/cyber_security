@@ -1,8 +1,8 @@
 import React from 'react'
 import Navbar from './component/Navbar'
 import Hero from './component/Hero'
-import Tech from './component/Tech'
-import Expe from './component/Skill'
+import Skill from './component/Skill'
+import Expe from './component/Experiance'
 import Project from './component/Project'
 import Contact from './component/Contac'
 import Footer from './component/Foo'
@@ -13,7 +13,7 @@ export default function App() {
 
 <Navbar/>
 <Hero/>
-<Tech/>
+<Skill/>
 <Expe/>
 <Project/>
 <Contact/>
