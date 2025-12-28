@@ -3,7 +3,9 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-16 lg:px-24 py-16 bg-gradient-to-b from-black via-gray-900 to-black text-white min-h-screen relative overflow-hidden">
+    <section 
+    className="flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-16 lg:px-24 py-16 bg-gradient-to-b from-black via-gray-900 to-black text-white min-h-screen relative overflow-hidden"
+    >
 
       {/* Animated Background Glow */}
       <motion.div
@@ -16,7 +18,7 @@ export default function Hero() {
       {[...Array(10)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-green-400 rounded-full blur-sm"
+          className="absolute h-2 bg-green-400 rounded-full blur-sm"
           initial={{
             x: Math.random() * window.innerWidth,
             y: Math.random() * window.innerHeight,
@@ -56,9 +58,9 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.8 }}
         >
           A passionate{" "}
-          <span className="text-green-400 font-semibold">Cybersecurity Analyst</span> 
+          <span className="text-green-400 font-semibold">Cybersecurity Web Development</span> 
           and{" "}
-          <span className="text-emerald-400 font-semibold">Web Developer</span> 
+          <span className="text-emerald-400 font-semibold">AI Developer</span> 
           dedicated to creating secure, innovative, and user-friendly digital solutions.
         </motion.p>
 
@@ -100,35 +102,7 @@ export default function Hero() {
           </p>
         </motion.div>
 
-        {/* Buttons Section */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
-          {/* Learn More Button */}
-          <motion.button
-            whileHover={{
-              scale: 1.1,
-              boxShadow: "0 0 20px rgba(0,255,100,0.8)",
-              backgroundColor: "#22c55e",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-green-500 hover:bg-green-400 text-black font-semibold rounded-full shadow-[0_0_25px_rgba(0,255,100,0.4)] transition-all duration-300"
-          >
-            Learn More
-          </motion.button>
-
-          {/* Contact Me Button */}
-          <motion.button
-            whileHover={{
-              scale: 1.1,
-              boxShadow: "0 0 20px rgba(52,211,153,0.8)",
-              backgroundColor: "#34d399",
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-full shadow-[0_0_25px_rgba(52,211,153,0.4)] transition-all duration-300"
-            onClick={() => window.location.href = "#contact"}
-          >
-            Contact Me
-          </motion.button>
-        </div>
+        
       </motion.div>
 
       {/* Image Section */}
@@ -152,7 +126,7 @@ export default function Hero() {
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
           <motion.img
-            src="https://media.istockphoto.com/id/1437816897/photo/business-woman-manager-or-human-resources-portrait-for-career-success-company-we-are-hiring.jpg?s=612x612&w=0&k=20&c=tyLvtzutRh22j9GqSGI33Z4HpIwv9vL_MZw_xOE19NQ="
+            src="https://res.cloudinary.com/ddj2og1rh/image/upload/v1766996678/simran_m06yuk.jpg"
             alt="Simran"
             className="object-cover w-full h-full"
             whileHover={{ scale: 1.05, rotate: 2 }}

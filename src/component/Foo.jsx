@@ -18,7 +18,7 @@ export default function Foo() {
           className="flex flex-col items-start"
         >
           <h1 className="text-2xl font-bold text-green-400 tracking-wide">
-            ⚡ SUNO STUDIO
+            Let's Connect & Collaborate🤝
           </h1>
           <p className="mt-3 text-green-300 text-sm max-w-sm">
             Building beautiful, fast, and modern web experiences using React, Tailwind CSS,
