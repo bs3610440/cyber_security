@@ -75,7 +75,7 @@ export default function Hero() {
             className="text-2xl font-bold text-green-400 mb-2"
             whileHover={{ scale: 1.05, textShadow: "0 0 15px #22c55e" }}
           >
-            ⚔️ Cybersecurity
+          Cybersecurity
           </motion.h2>
           <p className="text-gray-300">
             I focus on safeguarding systems, identifying vulnerabilities, 
@@ -94,7 +94,7 @@ export default function Hero() {
             className="text-2xl font-bold text-emerald-400 mb-2"
             whileHover={{ scale: 1.05, textShadow: "0 0 15px #34d399" }}
           >
-            💻 Web Development
+            Web Development
           </motion.h2>
           <p className="text-gray-300">
             I design and build responsive websites that are fast, modern, 
