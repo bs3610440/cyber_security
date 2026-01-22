@@ -60,7 +60,7 @@ export default function Contact() {
           <motion.div variants={fadeUp} className="space-y-5">
             {[
               { icon: Mail, label: 'Email', value: 'bs@example.com' },
-              { icon: Phone, label: 'Phone', value: '+1 (555) 123-4567' },
+              { icon: Phone, label: 'Phone', value: '+91 8950026186' },
               { icon: MapPin, label: 'Location', value: 'Haryana, India' }
             ].map((item, idx) => (
               <motion.div
