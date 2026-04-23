@@ -6,6 +6,7 @@ import Expe from './component/Experiance'
 import Project from './component/Project'
 import Contact from './component/Contac'
 import Footer from './component/Foo'
+import Education from './component/Education'
 export default function App() {
   return (
     <div className='text-white'>
@@ -13,6 +14,7 @@ export default function App() {
       <Navbar />
       <Hero />
       <Skill />
+      <Education/>
       <Expe />
       <Project />
       <Contact />

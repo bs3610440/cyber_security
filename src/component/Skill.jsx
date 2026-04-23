@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -30,18 +31,19 @@ export default function Skill() {
   ];
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden bg-gradient-to-br from-black via-gray-900 to-green-900 text-white">
-      {/* Glowing background lights */}
+    <section className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden bg-[#020617] text-white">
+
+      {/* 🔥 Glow (same hi rehne diya for effect) */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          animate={{ y: [0, -40, 0], opacity: [0.3, 0.8, 0.3] }}
-          transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-          className="absolute w-[28rem] h-[28rem] bg-green-500 rounded-full blur-3xl opacity-20 -top-32 -left-32"
+          animate={{ y: [0, -40, 0], opacity: [0.2, 0.5, 0.2] }}
+          transition={{ repeat: Infinity, duration: 6 }}
+          className="absolute w-[28rem] h-[28rem] bg-green-500 rounded-full blur-3xl opacity-10 -top-32 -left-32"
         />
         <motion.div
-          animate={{ y: [0, 40, 0], opacity: [0.2, 0.7, 0.2] }}
-          transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-          className="absolute w-[24rem] h-[24rem] bg-emerald-400 rounded-full blur-3xl opacity-20 bottom-0 right-0"
+          animate={{ y: [0, 40, 0], opacity: [0.2, 0.5, 0.2] }}
+          transition={{ repeat: Infinity, duration: 8 }}
+          className="absolute w-[24rem] h-[24rem] bg-emerald-400 rounded-full blur-3xl opacity-10 bottom-0 right-0"
         />
       </div>
 
@@ -50,19 +52,20 @@ export default function Skill() {
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-5xl md:text-7xl font-extrabold mb-16 text-green-400 text-center drop-shadow-[0_0_25px_rgba(0,255,100,0.7)]"
+        className="text-4xl md:text-6xl font-extrabold mb-16 text-green-300 text-center drop-shadow-[0_0_25px_rgba(0,255,100,0.7)]"
       >
-         Technology Universe
+        Technology Universe
       </motion.h1>
 
-      {/* Rotating Icon Ring */}
+      {/* Rotating Icons */}
       <div className="relative w-[24rem] h-[24rem] sm:w-[28rem] sm:h-[28rem] flex items-center justify-center">
-        {/* Central Glowing Core */}
+
+        {/* Center Glow */}
         <motion.div
           animate={{ scale: [1, 1.15, 1] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="absolute w-32 h-32 bg-green-400 rounded-full blur-2xl opacity-50 shadow-[0_0_40px_rgba(0,255,100,0.8)]"
-        ></motion.div>
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="absolute w-32 h-32 bg-green-400 rounded-full blur-2xl opacity-40 shadow-[0_0_40px_rgba(0,255,100,0.6)]"
+        />
 
         {/* Rotating Circle */}
         <motion.div
@@ -83,10 +86,8 @@ export default function Skill() {
                 style={{ transform: `translate(${x}px, ${y}px)` }}
                 whileHover={{
                   scale: 1.4,
-                  rotate: 10,
                   textShadow: "0px 0px 20px rgba(0,255,100,0.9)",
                 }}
-                transition={{ type: "spring", stiffness: 200 }}
                 title={item.name}
               >
                 {item.icon}
@@ -96,16 +97,6 @@ export default function Skill() {
         </motion.div>
       </div>
 
-      {/* Subtext */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="mt-14 text-lg sm:text-xl text-gray-300 max-w-xl text-center"
-      >
-        <span className="text-green-300 font-semibold">
-        </span>{" "}
-      </motion.p>
     </section>
   );
 }
