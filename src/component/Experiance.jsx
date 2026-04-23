@@ -23,7 +23,7 @@ export default function Experiance() {
     {
       logo: "https://res.cloudinary.com/dxa0dfaes/image/upload/v1768900152/favicon_iounbx.png",
       companyname: "Migration Hub",
-      startdate: "Nov 24, 2026",
+      startdate: "Nov 24, 2025",
       enddate: "Present",
       posti: "Frontend Developer (Project)",
       des: "Built a modern visa-based frontend application using React and Tailwind CSS with smooth animations and responsive UI design.",
