@@ -1,116 +1,186 @@
-'use client';
-import { motion } from 'framer-motion';
-import { Download, Github, Linkedin, Instagram } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { FaHome, FaUser, FaProjectDiagram, FaEnvelope, FaBlog, FaGithub, FaLinkedin, FaTwitter, FaBars, FaTimes } from 'react-icons/fa';
 
 export default function Navbar() {
-  const icons = [
-    { id: 1, icon: <Github size={22} />, link: 'https://github.com' },
-    { id: 2, icon: <Linkedin size={22} />, link: 'https://linkedin.com' },
-    { id: 3, icon: <Instagram size={22} />, link: 'https://instagram.com' },
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+
+  const navLinks = [
+    { name: 'Home', href: 'home', icon: FaHome },
+    { name: 'Skill', href: 'skill', icon: FaUser },
+    { name: 'Projects', href: 'projects', icon: FaProjectDiagram },
+    { name: 'Education', href: 'education', icon: FaBlog },
+    { name: 'Contact', href: 'contact', icon: FaEnvelope },
   ];
 
-  // Animation Variants for sequential loading (Stagger Effect)
-  const navVariants = {
-    hidden: { y: -100, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-        damping: 20,
-        staggerChildren: 0.2, // Items appear one after another
-      },
-    },
+  const socialLinks = [
+    { icon: FaGithub, href: 'https://github.com/yourusername', color: 'hover:text-gray-900' },
+    { icon: FaLinkedin, href: 'https://linkedin.com/in/yourusername', color: 'hover:text-blue-600' },
+    { icon: FaTwitter, href: 'https://twitter.com/yourusername', color: 'hover:text-blue-400' },
+  ];
+
+  // Function to scroll to a section
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      setActiveSection(sectionId);
+      setIsOpen(false); // Close mobile menu after click
+    }
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { type: 'spring', stiffness: 300, damping: 24 } 
-    },
-  };
+  // Track active section based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navLinks.map(link => link.href);
+      const scrollPosition = window.scrollY + 100;
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <motion.nav
-      variants={navVariants}
-      initial="hidden"
-      animate="visible"
-      className="fixed top-0 left-0 w-full flex justify-between items-center px-6 md:px-12 py-4 
-      bg-[#020617]/80 backdrop-blur-md text-green-300 z-50 
-      border-b border-green-500/10 shadow-lg shadow-[#020617]/50"
-    >
-      {/* 🔥 LOGO + NAME */}
-      <motion.div
-        variants={itemVariants}
-        className="flex items-center gap-3 cursor-pointer group"
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        {/* ✅ SJ LOGO (Floating Animation added) */}
-        <motion.img
-          src="/logo.png"
-          alt="SJ Logo"
-          animate={{ y: [0, -3, 0] }} // Subtle continuous float
-          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-          className="w-18 h-18 object-contain bg-[#020617]/60 p-1 rounded-md"
-          whileHover={{ scale: 1.1, rotate: 10 }}
-        />
-
-        {/* ✅ NAME */}
-        <span className="text-green-300 text-4xl font-bold tracking-wide relative">
-          Simar
-          {/* Animated Underline Effect on Hover */}
-          <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-green-400 transition-all duration-300 group-hover:w-full"></span>
-        </span>
-      </motion.div>
-
-      {/* RIGHT SIDE */}
-      <div className="flex items-center gap-6">
-        {/* SOCIAL ICONS */}
-        <motion.div variants={itemVariants} className="flex gap-5">
-          {icons.map((item) => (
-            <motion.a
-              key={item.id}
-              href={item.link}
-              target="_blank"
-              whileHover={{ 
-                scale: 1.2, 
-                rotate: 5,
-                filter: "drop-shadow(0px 0px 8px rgba(74, 222, 128, 0.5))" // Glow effect
-              }}
-              whileTap={{ scale: 0.9 }}
-              className="text-green-300 hover:text-green-400 transition-colors"
+    <nav className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-50 transition-all duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <button 
+              onClick={() => scrollToSection('home')}
+              className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent cursor-pointer"
             >
-              {item.icon}
-            </motion.a>
-          ))}
-        </motion.div>
+              simran
+            </button>
+          </div>
 
-        {/* RESUME BUTTON */}
-        <motion.a
-          variants={itemVariants}
-          href="/resume.pdf"
-          whileHover={{ 
-            scale: 1.05,
-            boxShadow: "0px 0px 15px rgba(34, 197, 94, 0.4)" 
-          }}
-          whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-2 
-          bg-green-500 text-black px-5 py-2 rounded-lg font-bold 
-          hover:bg-green-400 transition-all"
-        >
-          <motion.div
-            animate={{ y: [0, 2, 0] }} // Small bounce for the download icon
-            transition={{ repeat: Infinity, duration: 1.5 }}
-          >
-            <Download size={18} strokeWidth={2.5} />
-          </motion.div>
-          Resume
-        </motion.a>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-1">
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              const isActive = activeSection === link.href;
+              return (
+                <button
+                  key={link.name}
+                  onClick={() => scrollToSection(link.href)}
+                  className={`group flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 ${
+                    isActive 
+                      ? 'text-purple-600 bg-purple-50' 
+                      : 'text-gray-700 hover:text-purple-600 hover:bg-purple-50'
+                  }`}
+                >
+                  <Icon className={`text-lg transition-transform ${isActive ? 'scale-110' : 'group-hover:scale-110'}`} />
+                  <span className="font-medium">{link.name}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Social Links - Desktop */}
+          <div className="hidden md:flex items-center gap-3">
+            {socialLinks.map((social, index) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`text-gray-600 ${social.color} transition-all duration-300 hover:scale-110`}
+                >
+                  <Icon className="text-xl" />
+                </a>
+              );
+            })}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-700 hover:text-purple-600 focus:outline-none transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <FaTimes className="text-2xl" /> : <FaBars className="text-2xl" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        <div className={`md:hidden transition-all duration-300 ease-in-out ${
+          isOpen ? 'max-h-96 opacity-100 visible' : 'max-h-0 opacity-0 invisible'
+        }`}>
+          <div className="py-4 space-y-2 border-t border-gray-100">
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              const isActive = activeSection === link.href;
+              return (
+                <button
+                  key={link.name}
+                  onClick={() => scrollToSection(link.href)}
+                  className={`flex items-center gap-3 px-4 py-3 w-full rounded-lg transition-all duration-300 ${
+                    isActive 
+                      ? 'text-purple-600 bg-purple-50' 
+                      : 'text-gray-700 hover:text-purple-600 hover:bg-purple-50'
+                  }`}
+                >
+                  <Icon className="text-lg" />
+                  <span className="font-medium">{link.name}</span>
+                </button>
+              );
+            })}
+            
+            {/* Social Links - Mobile */}
+            <div className="flex justify-center gap-6 pt-4 mt-2 border-t border-gray-100">
+              {socialLinks.map((social, index) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-gray-600 ${social.color} transition-all duration-300 hover:scale-110`}
+                  >
+                    <Icon className="text-2xl" />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
-    </motion.nav>
+
+      {/* Active Indicator Line */}
+      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 opacity-50">
+        <div 
+          className="h-full bg-gradient-to-r from-purple-600 to-pink-600 transition-all duration-300"
+          style={{ 
+            width: `${(navLinks.findIndex(link => link.href === activeSection) + 1) * (100 / navLinks.length)}%` 
+          }}
+        />
+      </div>
+    </nav>
   );
 }
