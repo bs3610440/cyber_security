@@ -8,7 +8,6 @@ export default function Hero() {
     { name: 'Node.js', icon: FaNodeJs, color: 'text-green-500' },
     { name: 'MongoDB', icon: SiMongodb, color: 'text-green-600' },
     { name: 'Express', icon: SiExpress, color: 'text-gray-700' },
-    { name: 'Python', icon: FaPython, color: 'text-blue-500' },
     { name: 'Tailwind', icon: SiTailwindcss, color: 'text-cyan-400' },
   ];
 
@@ -78,14 +77,18 @@ export default function Hero() {
 
             {/* Social Links */}
             <div className="flex gap-4 pt-4 animate-[fadeInUp_0.6s_ease-out_0.8s_forwards] opacity-0">
-              <a href="https://github.com/simran" target="_blank" rel="noopener noreferrer" 
+              <a href="https://github.com/bs3610440"
+               target="_blank" rel="noopener noreferrer" 
                 className="bg-gray-800 p-3 rounded-full text-white hover:bg-gray-900 transform hover:scale-110 transition-all duration-300">
                 <FaGithub className="text-xl" />
               </a>
-              <a href="https://linkedin.com/in/simran" target="_blank" rel="noopener noreferrer"
+
+              <a href="https://www.linkedin.com/in/simran-jeet-kaur-01b580391"
+               target="_blank" rel="noopener noreferrer"
                 className="bg-blue-600 p-3 rounded-full text-white hover:bg-blue-700 transform hover:scale-110 transition-all duration-300">
                 <FaLinkedin className="text-xl" />
               </a>
+              
               <a href="https://twitter.com/simran" target="_blank" rel="noopener noreferrer"
                 className="bg-blue-400 p-3 rounded-full text-white hover:bg-blue-500 transform hover:scale-110 transition-all duration-300">
                 <FaTwitter className="text-xl" />

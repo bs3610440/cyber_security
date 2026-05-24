@@ -1,55 +1,149 @@
 'use client';
-import React from "react";
-import { motion } from "framer-motion";
-import { FaBriefcase, FaCalendarAlt, FaUserTie, FaCode, FaRocket, FaAward, FaStar } from 'react-icons/fa';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  FaBriefcase, FaCalendarAlt, FaUserTie, FaShieldAlt, 
+  FaRocket, FaShoppingBag, FaStar, FaGithub, FaExternalLinkAlt,
+  FaAward, FaUsers, FaChartLine, FaGlobe, FaCode, FaLaptopCode,
+  FaDatabase, FaServer, FaCloud, FaLock, FaMobileAlt
+} from 'react-icons/fa';
+import { SiMongodb, SiExpress, SiReact, SiNodedotjs, SiTailwindcss } from 'react-icons/si';
 
-export default function Experience() {
-  const experienceData = [
+export default function ExperienceProjects() {
+  const [filter, setFilter] = useState("all");
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  const projects = [
     {
-      id: 1,
-      title: "Frontend Developer Intern",
-      company: "Sqilco Pvt Ltd",
-      duration: "May 2024 - 2025",
-      description: "Built responsive UI using React and Tailwind CSS with smooth animations using Framer Motion. Collaborated with design team to implement pixel-perfect designs and optimized website performance.",
-      technologies: ["React.js", "Tailwind CSS", "Framer Motion", "JavaScript"],
-      type: "internship",
-      achievements: ["Improved load time by 40%", "Implemented 10+ responsive components"]
+      id: "p1",
+      logo: "https://res.cloudinary.com/dxa0dfaes/image/upload/v1768900152/favicon_iounbx.png",
+      title: "Migration Hub",
+      startdate: "Nov 24, 2025",
+      enddate: "Present",
+      role: "Frontend Developer",
+      description: "Built a modern visa-based frontend application using React and Tailwind CSS with smooth animations and responsive UI design.",
+      technologies: ["React.js", "Tailwind CSS", "Framer Motion", "REST API"],
+      type: "project",
+      featured: true,
+      achievements: ["Achieved 99% Lighthouse score", "Implemented complex animations", "Reduced load time by 50%"],
+      impact: "Increased user engagement by 45%",
+      color: "green",
+      liveLink: "https://migrationhub.com",
+      githubLink: "https://github.com/username/migration-hub"
     },
     {
-      id: 2,
-      title: "MERN Stack Developer",
-      company: "Freelance",
-      duration: "Nov 2025 - Present",
-      description: "Developed full-stack applications including authentication systems, APIs, and real-time features using MERN stack. Worked with 5+ clients to deliver custom web solutions.",
-      technologies: ["MongoDB", "Express.js", "React.js", "Node.js", "Socket.io"],
-      type: "freelance",
-      achievements: ["Delivered 8+ projects", "5-star client ratings"]
+      id: "p2",
+      logo: "https://cdn-icons-png.flaticon.com/512/1055/1055687.png",
+      title: "She Slay - E-Commerce",
+      startdate: "Dec 15, 2025",
+      enddate: "Present",
+      role: "Full Stack Developer",
+      description: "Designed and developed a modern women's clothing e-commerce website featuring product catalog, shopping cart, wishlist, secure checkout, and payment integration.",
+      technologies: ["React.js", "Node.js", "MongoDB", "Tailwind CSS", "Razorpay", "JWT"],
+      type: "project",
+      featured: true,
+      achievements: ["Processed 500+ transactions", "30% increase in conversion rate", "Implemented AI-based recommendations"],
+      impact: "Generated $50K+ in sales within 3 months",
+      color: "pink",
+      liveLink: "https://sheslay.com",
+      githubLink: "https://github.com/username/sheslay"
     },
     {
-      id: 3,
-      title: "Full Stack Developer",
-      company: "Personal Projects",
-      duration: "2025 - 2026",
-      description: "Built projects like Portfolio, E-book platform, and Messenger app to enhance full-stack and real-time development skills. Focused on implementing modern UI/UX patterns.",
-      technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "WebSocket"],
-      type: "personal",
-      achievements: ["3 major projects completed", "100+ hours of development"]
+      id: "p3",
+      logo: "https://blog.ipleaders.in/wp-content/uploads/2020/10/1573226259538.jpg",
+      title: "Cyber Crime Reporting System",
+      startdate: "Jan 5, 2026",
+      enddate: "Present",
+      role: "Full Stack Developer",
+      description: "Developed a full-stack cyber crime system using MERN stack with secure APIs, MongoDB database, and tested endpoints via Postman.",
+      technologies: ["MERN Stack", "Security", "Postman", "JWT", "Socket.io"],
+      type: "project",
+      achievements: ["Handled 1000+ reports", "Reduced response time by 70%", "Implemented real-time tracking"],
+      impact: "Helped resolve 200+ cyber crime cases",
+      color: "purple",
+      githubLink: "https://github.com/username/cyber-crime"
+    },
+    {
+      id: "p4",
+      logo: "https://cdn-icons-png.flaticon.com/512/5968/5968705.png",
+      title: "Portfolio Website",
+      startdate: "Jan 10, 2026",
+      enddate: "Present",
+      role: "Designer & Developer",
+      description: "Created a modern, responsive portfolio website showcasing skills, projects, and achievements with smooth animations.",
+      technologies: ["React.js", "Tailwind CSS", "Framer Motion", "EmailJS"],
+      type: "project",
+      achievements: ["100+ hours of development", "Fully responsive design", "SEO optimized"],
+      impact: "Increased client inquiries by 60%",
+      color: "blue",
+      liveLink: "https://portfolio.com",
+      githubLink: "https://github.com/username/portfolio"
     }
   ];
 
+  const experiences = [
+    {
+      id: "e1",
+      logo: "https://cdn-icons-png.flaticon.com/512/5968/5968705.png",
+      companyname: "Sqilco",
+      startdate: "May 27, 2024",
+      enddate: "July 12, 2025",
+      posti: "Internship - MERN Stack Developer",
+      des: "Worked on full-stack web applications using the MERN stack. Built and optimized REST APIs, improved frontend performance, and ensured smooth integration between backend and UI components.",
+      technologies: ["React.js", "Node.js", "MongoDB", "Express.js"],
+      type: "internship",
+      achievements: ["Reduced API response time by 40%", "Implemented real-time features", "Mentored 2 junior developers"],
+      impact: "Improved overall application performance by 35%",
+      color: "blue"
+    },
+    {
+      id: "e2",
+      logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwYBXq2rZtSKtFVed6pvisK6hSrCcwnEONvA&s",
+      companyname: "Harton Advance Skill Center",
+      startdate: "August 5, 2025",
+      enddate: "Present",
+      posti: "Cyber Security & Web Development Associate",
+      des: "Working on secure web applications with a focus on cybersecurity. Implementing authentication, data protection, and vulnerability assessment.",
+      technologies: ["Security", "Penetration Testing", "Authentication", "OWASP"],
+      type: "work",
+      achievements: ["Identified 15+ security vulnerabilities", "Implemented multi-factor authentication", "Conducted 5 security workshops"],
+      impact: "Enhanced application security by 60%",
+      color: "red"
+    },
+    
+  ];
+
+  const allItems = [...projects, ...experiences];
+  const filteredData = filter === "all" 
+    ? allItems 
+    : filter === "project" 
+      ? projects 
+      : experiences;
+
+  const getColorScheme = (color) => {
+    const schemes = {
+      blue: { light: "bg-blue-50", text: "text-blue-600", border: "hover:border-blue-200", icon: "text-blue-500", gradient: "from-blue-500 to-blue-600" },
+      red: { light: "bg-red-50", text: "text-red-600", border: "hover:border-red-200", icon: "text-red-500", gradient: "from-red-500 to-red-600" },
+      green: { light: "bg-green-50", text: "text-green-600", border: "hover:border-green-200", icon: "text-green-500", gradient: "from-green-500 to-green-600" },
+      pink: { light: "bg-pink-50", text: "text-pink-600", border: "hover:border-pink-200", icon: "text-pink-500", gradient: "from-pink-500 to-pink-600" },
+      purple: { light: "bg-purple-50", text: "text-purple-600", border: "hover:border-purple-200", icon: "text-purple-500", gradient: "from-purple-500 to-purple-600" }
+    };
+    return schemes[color] || schemes.purple;
+  };
+
   return (
-    <section className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-purple-50">
+    <section className="relative min-h-screen py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-purple-50">
       
-      {/* Animated Background - Matching Hero Section */}
+      {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-[blob_7s_infinite]"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-[blob_7s_infinite] animation-delay-2000"></div>
-        <div className="absolute top-40 left-40 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-[blob_7s_infinite] animation-delay-4000"></div>
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-60 animate-[blob_7s_infinite]"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-2xl opacity-60 animate-[blob_7s_infinite] animation-delay-2000"></div>
+        <div className="absolute top-40 left-40 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-2xl opacity-60 animate-[blob_7s_infinite] animation-delay-4000"></div>
       </div>
 
       {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(30)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-purple-400 rounded-full"
@@ -58,11 +152,11 @@ export default function Experience() {
               top: `${Math.random() * 100}%`,
             }}
             animate={{
-              y: [0, -30, 0],
-              opacity: [0, 0.5, 0],
+              y: [0, -40, 0],
+              opacity: [0, 0.4, 0],
             }}
             transition={{
-              duration: 3 + Math.random() * 4,
+              duration: 3 + Math.random() * 5,
               repeat: Infinity,
               delay: Math.random() * 5,
             }}
@@ -70,55 +164,88 @@ export default function Experience() {
         ))}
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* Header - Matching Hero Style */}
-        <div className="text-center mb-16">
+        {/* Header */}
+        <div className="text-center mb-12">
           <motion.div 
-            className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-4"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-pink-100 backdrop-blur-sm px-5 py-2 rounded-full text-sm font-semibold mb-4 shadow-lg border border-purple-200"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <FaBriefcase className="text-purple-600" />
-            <span>Professional Journey</span>
+            <FaRocket className="text-purple-600" />
+            <span className="bg-gradient-to-r from-purple-700 to-pink-700 bg-clip-text text-transparent">Portfolio Highlights</span>
           </motion.div>
           
           <motion.h2 
-            className="text-5xl sm:text-6xl font-bold mb-4 relative inline-block"
+            className="text-5xl sm:text-6xl font-bold mb-4"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
-              Work Experience
+              Projects & Experience
             </span>
-            <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 rounded-full animate-gradient-x"></div>
           </motion.h2>
           
           <motion.p 
-            className="text-gray-600 max-w-2xl mx-auto text-lg"
+            className="text-gray-600 max-w-2xl mx-auto text-base"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            My professional journey and work experience in web development
+            Explore my featured projects and professional journey in web development & cybersecurity
           </motion.p>
+
+          {/* Filter Buttons */}
+          <motion.div 
+            className="flex flex-wrap justify-center gap-3 mt-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            {[
+              { id: "all", label: "All", icon: FaGlobe },
+              { id: "project", label: "Projects", icon: FaLaptopCode },
+              { id: "experience", label: "Experience", icon: FaBriefcase }
+            ].map((btn) => {
+              const Icon = btn.icon;
+              return (
+                <button
+                  key={btn.id}
+                  onClick={() => setFilter(btn.id)}
+                  className={`relative px-5 py-2 rounded-full font-medium text-sm transition-all duration-300 transform hover:scale-105 overflow-hidden ${
+                    filter === btn.id
+                      ? "text-white shadow-lg"
+                      : "bg-white text-gray-700 hover:bg-purple-50 hover:text-purple-600 shadow-md border border-gray-200"
+                  }`}
+                >
+                  {filter === btn.id && (
+                    <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600"></span>
+                  )}
+                  <span className="relative z-10 flex items-center gap-1.5">
+                    <Icon className="text-xs" />
+                    {btn.label}
+                  </span>
+                </button>
+              );
+            })}
+          </motion.div>
         </div>
 
         {/* Stats Section */}
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
         >
           {[
-            { icon: FaBriefcase, label: "Companies Worked", value: "3+", color: "purple" },
-            { icon: FaCode, label: "Projects Completed", value: "12+", color: "pink" },
-            { icon: FaRocket, label: "Happy Clients", value: "10+", color: "blue" },
-            { icon: FaStar, label: "Years Experience", value: "2+", color: "green" },
+            { icon: FaLaptopCode, label: "Projects", value: "4+", color: "purple" },
+            { icon: FaBriefcase, label: "Experience", value: "1+ Year", color: "pink" },
+            { icon: FaCode, label: "Technologies", value: "20+", color: "blue" },
+            { icon: FaUsers, label: "Happy Clients", value: "10+", color: "green" },
           ].map((stat, idx) => {
             const Icon = stat.icon;
             const getColorClass = () => {
@@ -131,144 +258,196 @@ export default function Experience() {
               }
             };
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="relative group transform hover:-translate-y-2 transition-all duration-300"
+                whileHover={{ y: -3 }}
+                className="bg-white rounded-xl p-4 text-center shadow-md hover:shadow-lg transition-all border border-gray-100"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all">
-                  <div className={`inline-block p-4 rounded-full mb-4 group-hover:scale-110 transition-transform ${getColorClass()}`}>
-                    <Icon className="text-3xl" />
-                  </div>
-                  <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-600 font-medium">{stat.label}</div>
+                <div className={`inline-block p-2 rounded-lg mb-2 ${getColorClass()}`}>
+                  <Icon className="text-xl" />
                 </div>
-              </div>
+                <div className="text-xl font-bold text-gray-800">{stat.value}</div>
+                <div className="text-xs text-gray-500">{stat.label}</div>
+              </motion.div>
             );
           })}
         </motion.div>
 
-        {/* Experience Cards with Timeline */}
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-8 lg:left-1/2 transform lg:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-purple-500 via-pink-500 to-purple-500 hidden md:block"></div>
-          
-          <div className="space-y-12">
-            {experienceData.map((exp, index) => {
-              const isEven = index % 2 === 0;
-              const getTypeColor = () => {
-                switch(exp.type) {
-                  case 'internship': return 'purple';
-                  case 'freelance': return 'pink';
-                  case 'personal': return 'blue';
-                  default: return 'purple';
-                }
-              };
-              const typeColor = getTypeColor();
-              
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <AnimatePresence>
+            {filteredData.map((item, index) => {
+              const colorScheme = getColorScheme(item.color);
+              const isProject = item.hasOwnProperty('title');
               return (
                 <motion.div
-                  key={exp.id}
-                  initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                  className={`relative md:flex md:items-start ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8`}
+                  key={item.id}
+                  initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, y: -30 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                  className="relative"
                 >
-                  {/* Timeline Dot */}
-                  <div className="absolute left-8 md:relative md:left-auto z-10">
-                    <div className="absolute md:relative left-0 top-1">
-                      <div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg"></div>
-                    </div>
-                  </div>
-                  
-                  {/* Content */}
-                  <div className={`ml-16 md:ml-0 flex-1 ${isEven ? 'md:text-right md:pr-12' : 'md:pl-12'}`}>
-                    <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 group">
-                      
-                      {/* Duration Badge */}
-                      <div className={`inline-flex items-center gap-2 bg-${typeColor}-100 text-${typeColor}-700 px-4 py-2 rounded-full text-sm font-semibold mb-4 ${isEven ? 'md:float-right md:ml-4' : 'float-left mr-4'}`}>
-                        <FaCalendarAlt className={`text-${typeColor}-600`} />
-                        <span>{exp.duration}</span>
+                  <div 
+                    className={`bg-white rounded-xl p-4 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 ${colorScheme.border} cursor-pointer h-full flex flex-col`}
+                    onMouseEnter={() => setSelectedCard(index)}
+                    onMouseLeave={() => setSelectedCard(null)}
+                  >
+                    
+                    {/* Featured Badge */}
+                    {item.featured && (
+                      <div className="absolute top-3 right-3 z-10">
+                        <span className="bg-gradient-to-r from-purple-600 to-pink-600 text-white text-[10px] px-2 py-0.5 rounded-full font-bold flex items-center gap-0.5">
+                          <FaStar className="text-yellow-300 text-[8px]" />
+                          Featured
+                        </span>
                       </div>
+                    )}
+                    
+                    {/* Header */}
+                    <div className="flex items-center gap-3 mb-3">
+                      <motion.div 
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.4 }}
+                        className="flex-shrink-0"
+                      >
+                        <div className="w-12 h-12 rounded-lg overflow-hidden bg-gray-50 p-1.5 border border-gray-200">
+                          <img src={item.logo} alt={isProject ? item.title : item.companyname} className="w-full h-full object-contain" />
+                        </div>
+                      </motion.div>
                       
-                      {/* Title and Company */}
-                      <div className={`mb-4 ${isEven ? 'md:text-right' : ''}`}>
-                        <h3 className="text-2xl font-bold text-gray-800 group-hover:text-purple-600 transition-colors">
-                          {exp.title}
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-base font-bold text-gray-800 truncate">
+                          {isProject ? item.title : item.companyname}
                         </h3>
-                        <p className="text-gray-500 font-medium flex items-center gap-2 justify-start md:justify-end">
-                          <FaUserTie className="text-purple-400" />
-                          {exp.company}
-                        </p>
-                      </div>
-
-                      {/* Description */}
-                      <p className={`text-gray-600 leading-relaxed mb-4 ${isEven ? 'md:text-right' : ''}`}>
-                        {exp.description}
-                      </p>
-
-                      {/* Technologies */}
-                      <div className={`mb-4 ${isEven ? 'md:flex md:flex-wrap md:justify-end' : ''}`}>
-                        <div className="flex flex-wrap gap-2 justify-start md:justify-end">
-                          {exp.technologies.map((tech, idx) => (
-                            <span
-                              key={idx}
-                              className="text-xs px-3 py-1 bg-purple-50 text-purple-600 rounded-full border border-purple-200 font-medium"
-                            >
-                              {tech}
-                            </span>
-                          ))}
+                        <div className="flex items-center gap-1 text-xs text-gray-500">
+                          <FaCalendarAlt className="text-[10px]" />
+                          <span>{item.startdate}</span>
+                          <span>→</span>
+                          <span>{item.enddate}</span>
                         </div>
                       </div>
+                    </div>
 
-                      {/* Achievements */}
-                      <div className={`mt-4 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl ${isEven ? 'md:text-right' : ''}`}>
-                        <h4 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2 justify-start md:justify-end">
-                          <FaAward className="text-purple-600" />
-                          <span>Key Achievements:</span>
-                        </h4>
-                        <ul className={`space-y-1 ${isEven ? 'md:flex md:flex-wrap md:gap-3 md:justify-end' : ''}`}>
-                          {exp.achievements.map((achievement, idx) => (
-                            <li key={idx} className="text-sm text-gray-600 flex items-center gap-2 justify-start md:justify-end">
-                              <span className="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
-                              {achievement}
-                            </li>
-                          ))}
-                        </ul>
+                    {/* Role/Position */}
+                    <div className="mb-2">
+                      <h4 className={`text-sm font-semibold flex items-center gap-1.5 ${colorScheme.text}`}>
+                        <FaUserTie className="text-xs" />
+                        <span className="truncate">{isProject ? item.role : item.posti}</span>
+                      </h4>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-gray-600 text-xs leading-relaxed mb-2 line-clamp-2 flex-1">
+                      {isProject ? item.description : item.des}
+                    </p>
+
+                    {/* Expandable Content */}
+                    <motion.div
+                      initial={false}
+                      animate={{ height: selectedCard === index ? "auto" : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      {/* Key Achievements */}
+                      {item.achievements && (
+                        <div className="mb-2 p-2 bg-gray-50 rounded-lg">
+                          <h5 className="text-[10px] font-semibold text-gray-700 mb-1 flex items-center gap-1">
+                            <FaAward className="text-purple-500 text-[10px]" />
+                            Achievements:
+                          </h5>
+                          <ul className="space-y-0.5">
+                            {item.achievements.map((achievement, idx) => (
+                              <li key={idx} className="text-[10px] text-gray-600 flex items-center gap-1">
+                                <span className="w-1 h-1 bg-purple-400 rounded-full"></span>
+                                {achievement}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {/* Impact */}
+                      {item.impact && (
+                        <div className={`mb-2 p-1.5 ${colorScheme.light} rounded-lg`}>
+                          <p className={`text-[10px] font-semibold ${colorScheme.text} flex items-center gap-1`}>
+                            <FaChartLine className="text-[10px]" />
+                            Impact: {item.impact}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Technologies */}
+                      <div className="flex flex-wrap gap-1 mb-2">
+                        {item.technologies.slice(0, selectedCard === index ? 10 : 3).map((tech, techIdx) => (
+                          <span
+                            key={techIdx}
+                            className={`text-[9px] px-1.5 py-0.5 rounded-full font-medium ${colorScheme.light} ${colorScheme.text} border border-gray-200`}
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {item.technologies.length > 3 && selectedCard !== index && (
+                          <span className="text-[9px] px-1.5 py-0.5 text-gray-400">
+                            +{item.technologies.length - 3}
+                          </span>
+                        )}
                       </div>
 
-                      {/* Footer Line */}
-                      <div className={`h-[2px] bg-gradient-to-r from-purple-200 via-pink-200 to-purple-200 rounded-full mt-4 ${isEven ? 'md:ml-auto' : ''}`} style={{ width: '100%' }}></div>
+                      {/* Project Links */}
+                      {(item.liveLink || item.githubLink) && (
+                        <div className="flex gap-2">
+                          {item.liveLink && (
+                            <a href={item.liveLink} target="_blank" rel="noopener noreferrer" 
+                              className={`flex items-center gap-0.5 text-[10px] font-semibold ${colorScheme.text} hover:underline`}>
+                              <FaExternalLinkAlt className="text-[8px]" /> Live
+                            </a>
+                          )}
+                          {item.githubLink && (
+                            <a href={item.githubLink} target="_blank" rel="noopener noreferrer"
+                              className={`flex items-center gap-0.5 text-[10px] font-semibold ${colorScheme.text} hover:underline`}>
+                              <FaGithub className="text-[8px]" /> Code
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </motion.div>
+
+                    {/* Expand Hint */}
+                    <div className="mt-2 text-center">
+                      <motion.div
+                        animate={{ y: selectedCard === index ? 0 : [0, -2, 0] }}
+                        transition={{ repeat: selectedCard === index ? 0 : Infinity, duration: 1.5 }}
+                        className="text-[8px] text-gray-400 flex items-center justify-center gap-1"
+                      >
+                        <span>{selectedCard === index ? "▲ Less info" : "▼ Click to expand"}</span>
+                      </motion.div>
                     </div>
                   </div>
                 </motion.div>
               );
             })}
-          </div>
+          </AnimatePresence>
         </div>
 
         {/* Call to Action */}
         <motion.div 
-          className="mt-20 text-center"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-12 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-2">Ready to Work Together?</h3>
-            <p className="text-purple-100 mb-6">Let's discuss how I can contribute to your next project</p>
-            <a 
-              href="#contact"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-white text-purple-600 rounded-full font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
-            >
-              <FaRocket />
-              <span>Hire Me</span>
-            </a>
-          </div>
+          <motion.a 
+            href="/contact"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold text-sm shadow-md hover:shadow-lg transition-all"
+          >
+            <FaRocket className="text-sm" />
+            <span>Let's Work Together</span>
+          </motion.a>
         </motion.div>
       </div>
 

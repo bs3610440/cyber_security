@@ -1,4 +1,5 @@
-import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Navbar from './component/Navbar.jsx';
 import Home from './component/Home.jsx'
 import Skill from './component/Skill.jsx'
@@ -9,13 +10,17 @@ import Contact from './component/Contac.jsx'
 
 export default function App() {
   return (
-    <div className="overflow-x-hidden">
+      <BrowserRouter>
       <Navbar />
-      <Home />
-      <Skill />
-      <Project/>
-      <Education />
-      <Contact />
-    </div>
+      <Routes>
+
+         <Route path="/" element={<Home/>} />
+          <Route path="/skill" element={<Skill/>} />
+         <Route path="/project" element={<Project/>} />
+         <Route path="/education" element={<Education/>} />
+         <Route path="/contact" element={<Contact/>} />
+      
+      </Routes>
+      </BrowserRouter>
   );
 }
