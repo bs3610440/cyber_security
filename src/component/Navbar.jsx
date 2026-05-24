@@ -12,7 +12,6 @@ import {
   FaTimes,
   FaDownload,
   FaCode,
-  FaShieldAlt
 } from 'react-icons/fa';
 
 import { useNavigate, useLocation } from "react-router-dom";
@@ -54,11 +53,10 @@ export default function Navbar() {
   ];
 
   const handleDownloadResume = () => {
-    // Create a sample resume PDF or link to actual resume
-    const resumeUrl = '/resume.pdf'; // Replace with your actual resume URL
+    const resumeUrl = '/simran Resume.pdf.pdf'; 
     const link = document.createElement('a');
     link.href = resumeUrl;
-    link.download = 'Simran_Jeet_Kaur_Resume.pdf';
+    link.download = 'Simran_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -69,7 +67,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
 
-          {/* Logo with enhanced design */}
+          {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
               <FaCode className="text-white text-sm" />
@@ -102,7 +100,6 @@ export default function Navbar() {
                   <Icon className={`text-base ${isActive ? 'text-purple-600' : 'group-hover:text-purple-600'}`} />
                   <span className="font-medium">{link.name}</span>
                   
-                  {/* Active indicator */}
                   {isActive && (
                     <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full"></div>
                   )}
@@ -111,9 +108,8 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Right side - Social icons and Resume Button */}
+          {/* Right side */}
           <div className="hidden md:flex items-center gap-3">
-            {/* Social icons with tooltips */}
             {socialLinks.map((social, index) => {
               const Icon = social.icon;
               return (
@@ -126,7 +122,6 @@ export default function Navbar() {
                   >
                     <Icon className="text-xl" />
                   </a>
-                  {/* Tooltip */}
                   <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                     {social.label}
                   </div>
@@ -134,7 +129,6 @@ export default function Navbar() {
               );
             })}
 
-            {/* Divider */}
             <div className="w-px h-6 bg-gray-300 mx-1"></div>
 
             {/* Download Resume Button */}
@@ -167,10 +161,9 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu - Enhanced */}
+        {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden py-4 border-t border-gray-100 animate-slideDown">
-            {/* Navigation Links */}
             <div className="space-y-1">
               {navLinks.map((link) => {
                 const Icon = link.icon;
@@ -198,10 +191,9 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* Divider */}
             <div className="my-4 border-t border-gray-100"></div>
 
-            {/* Download Resume Button - Mobile */}
+            {/* Mobile Resume Button */}
             <button
               onClick={() => {
                 handleDownloadResume();
@@ -213,7 +205,7 @@ export default function Navbar() {
               <span>Download Resume</span>
             </button>
 
-            {/* Social Links - Mobile */}
+            {/* Mobile Social Links */}
             <div className="flex justify-center gap-4 pt-2">
               {socialLinks.map((social, index) => {
                 const Icon = social.icon;
@@ -248,6 +240,15 @@ export default function Navbar() {
         
         .animate-slideDown {
           animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-3px); }
+        }
+        
+        .animate-bounce {
+          animation: bounce 0.5s ease infinite;
         }
       `}</style>
     </nav>
